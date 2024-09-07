@@ -24,7 +24,7 @@ print (f"Notas do aluno: {notas}\n",end= ""f"Média final do aluno: {media}")
 
 # Situação do aluno.
 if media >= 7:
-    print(f'\nO aluno foi aprovado com uma média de {media}')
+    print(f'\nO aluno foi aprovado com uma média de {media}.')
 else:
     print(f"\nPor conta da média de {media}, o aluno foi reprovado.")
 
