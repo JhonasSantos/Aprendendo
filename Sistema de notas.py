@@ -1,4 +1,4 @@
-# Definindo a Var
+# Definindo a Lista onde serão guardadas as notas.
 notas = []
 
 # Loop para descrever as notas
