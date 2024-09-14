@@ -1,0 +1,48 @@
+class Livro:
+    def __init__(self, titulo, autor, genero, quantidade):
+        self.titulo = titulo
+        self.autor = autor
+        self.quantidade = int(quantidade)
+        self.genero = genero
+
+biblioteca = []
+
+def add_livro():
+    titulo = input("Digite o título do livro: ").title()
+    autor = input("Digite o autor do livro: ").title()
+    genero = input("Digite o genero do livro: ").title()
+    quantidade = int(input("Digite a quantidade de livros: "))
+    novo_livro = Livro(titulo, autor, quantidade, genero)
+    biblioteca.append(novo_livro)
+    print("\nLivro adicionado com sucesso\n")
+
+def buscar_livro():
+    titulo = input("Digite o titulo do livro: ").title()
+    for livro in biblioteca:
+        if livro.titulo == titulo:
+            print(f"Título: {livro.titulo}\nAutor: {livro.autor}\nGênero: {livro.genero}\nQuantidade: {livro.quantidade}")
+        else:
+            print("Livro não encontrado.")
+
+def listar_livros():
+    if not biblioteca:
+        print("Nenhum livro encontrado.")
+    else:
+        for livro in biblioteca:
+            print(f"Título: {livro.titulo}\nAutor: {livro.autor}\nGênero: {livro.genero}\nQuantidade: {livro.quantidade}")
+
+
+
+while True:
+    print("1. Adicionar livros")
+    print("2. Buscar livros")
+    print("3. Listar livros")
+    a = int(input("oi: "))
+    if a == 1:
+        add_livro()
+    elif a == 2:
+        buscar_livro()
+    elif a == 3:
+        listar_livros()
+    else:
+        break
