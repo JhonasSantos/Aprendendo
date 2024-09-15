@@ -17,7 +17,7 @@ def add_livro():
     quantidade = int(input("Digite a quantidade de livros: "))
     novo_livro = Livro(titulo, autor, genero, quantidade)
     biblioteca.append(novo_livro)
-    print("\nLivro adicionado com sucesso\n")
+    print(f"\nO livro {titulo} adicionado com sucesso\n")
 
 def buscar_livro():
     titulo = input("Digite o titulo do livro: ").title()
@@ -30,9 +30,11 @@ def buscar_livro():
 def listar_livros():
     if not biblioteca:
         print("Nenhum livro encontrado.")
+        print("=+"*15)
     else:
         for livro in biblioteca:
             print(f"Título: {livro.titulo}\nAutor: {livro.autor}\nGênero: {livro.genero}\nQuantidade: {livro.quantidade}")
+            print("=+"*15)
 
 generos = []
 
@@ -47,20 +49,31 @@ def grafico_gen():
     plt.title("Distribuição por gênero")
     plt.show()
 
+print("=+"*15)
+print("Biblioteca Lauret")
+print("=+"*15)
 
 while True:
     print("1. Adicionar livros")
     print("2. Buscar livros")
     print("3. Listar livros")
     print("4. Quantidade de livros por generos")
-    a = int(input("oi: "))
-    if a == 1:
+    print("5. Sair")
+    opcao = int(input("\nEscolha uma opção: "))
+    if opcao == 1:
+        print("=+"*15)
         add_livro()
-    elif a == 2:
+    elif opcao == 2:
+        print("=+"*15)
         buscar_livro()
-    elif a == 3:
+    elif opcao == 3:
+        print("=+"*15)
         listar_livros()
-    elif a == 4:
+
+    elif opcao == 4:
+        print("=+"*15)
         grafico_gen()
-    else:
+    elif opcao == 5:
         break
+    else:
+        print("Opção invalida, tente novamente.")
