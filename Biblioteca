@@ -1,3 +1,6 @@
+import matplotlib.pyplot as plt
+
+
 class Livro:
     def __init__(self, titulo, autor, genero, quantidade):
         self.titulo = titulo
@@ -12,7 +15,7 @@ def add_livro():
     autor = input("Digite o autor do livro: ").title()
     genero = input("Digite o genero do livro: ").title()
     quantidade = int(input("Digite a quantidade de livros: "))
-    novo_livro = Livro(titulo, autor, quantidade, genero)
+    novo_livro = Livro(titulo, autor, genero, quantidade)
     biblioteca.append(novo_livro)
     print("\nLivro adicionado com sucesso\n")
 
@@ -31,12 +34,25 @@ def listar_livros():
         for livro in biblioteca:
             print(f"Título: {livro.titulo}\nAutor: {livro.autor}\nGênero: {livro.genero}\nQuantidade: {livro.quantidade}")
 
+generos = []
+
+def grafico_gen():
+    global generos
+    generos = [livro.genero for livro in biblioteca] 
+    generos.sort()
+    contagem_gen = [generos.count(genero) for genero in generos]
+    plt.bar(generos, contagem_gen)
+    plt.xlabel("Gêneros")
+    plt.ylabel("Quantidade")
+    plt.title("Distribuição por gênero")
+    plt.show()
 
 
 while True:
     print("1. Adicionar livros")
     print("2. Buscar livros")
     print("3. Listar livros")
+    print("4. Quantidade de livros por generos")
     a = int(input("oi: "))
     if a == 1:
         add_livro()
@@ -44,5 +60,7 @@ while True:
         buscar_livro()
     elif a == 3:
         listar_livros()
+    elif a == 4:
+        grafico_gen()
     else:
         break
