@@ -1,0 +1,40 @@
+class Lista:
+    def __init__(self, nome, data, hora):
+        self.nome = nome
+        self.data = data
+        self.hora = hora
+
+agenda = []
+
+def add_agenda():
+    nome = input("Nome: ")
+    data = (input("Data (dd/mm/aaaa): "))
+    hora = (input("Hora (hh:mm): "))
+    nova_hora = Lista (nome, data, hora)
+    agenda.append(nova_hora)
+    print("Cliente agendado com sucesso!\n")
+
+def listar_agenda():
+    if not agenda:
+        print("Agenda vazia")
+    else:
+        for hora in agenda:
+            print(f"Nome: {hora.nome}\nData: {hora.data}\nHora: {hora.hora}\n")
+
+def remover_cliente():
+    pass
+
+print("Agenda de clientes")
+
+while True:
+    print("1. Adicionar cliente")
+    print("2. Listar horário de clientes")
+    print("3. Sair")
+
+    opcao = int(input("Escolha uma opção: "))
+    if opcao == 1:
+        add_agenda()
+    elif opcao == 2:
+        listar_agenda()
+    else:
+        break
