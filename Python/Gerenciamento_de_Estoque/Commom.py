@@ -16,6 +16,7 @@ def cadastro():
             print(f"O produto '{nome}' já está cadastrado no estoque.")
             return
     categoria = input("Categoria: ").capitalize()
+    # Garante que o usuario digite um número inteiro
     while True:
         try:    
             quantidade = int(input("Quantidade: "))
