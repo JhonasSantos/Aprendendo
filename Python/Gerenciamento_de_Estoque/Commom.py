@@ -9,16 +9,26 @@ class Produto:
 
 # Função para cadastrar um novo produto
 def cadastro():
-    nome = input("Nome do produto: ")
+    nome = input("Nome do produto: ").capitalize()
     # Verifica se o nome do produto existe
     for produto in estoque:
-        if produto.nome.lower() == nome.lower():
+        if produto.nome == nome:
             print(f"O produto '{nome}' já está cadastrado no estoque.")
             return
-    categoria = input("Categoria: ")
-    quantidade = int(input("Quantidade: "))
-    preco = float(input("Preço: "))
-    setor = input("Setor: ")
+    categoria = input("Categoria: ").capitalize()
+    while True:
+        try:    
+            quantidade = int(input("Quantidade: "))
+            break
+        except ValueError:
+            print("Quantidade inválida. Digite um número inteiro.")
+    while True:
+        try:
+            preco = float(input("Preço: "))
+            break
+        except ValueError:
+            print("Preço inválido. Digite um número.")
+    setor = input("Setor: ").capitalize()
     novo_produto = Produto(nome, categoria, quantidade, preco, setor)
     estoque.append(novo_produto)
     print("\nProduto adicionado com sucesso!\n")
@@ -27,16 +37,16 @@ def cadastro():
 
 # Função para atualizar os dados de um produto
 def atualizar():
-    nome = input("Nome do produto que deseja atualizar: ")
+    nome = input("Nome do produto que deseja atualizar: ").capitalize()
     for produto in estoque:
         if nome == produto.nome:
             opcao = input("1. Atualizar nome\n2. Atualizar categoria\n3. Atualizar quantidade\n4. Atualizar preco\n5. Atualizar setor\n")
             if opcao == "1":
-                novo_nome = input("Novo nome: ")
+                novo_nome = input("Novo nome: ").capitalize()
                 produto.nome = novo_nome
                 print("Produto atualizado com sucesso!")
             elif opcao == "2":
-                nova_categ = input("Nova categoria: ")
+                nova_categ = input("Nova categoria: ").capitalize()
                 produto.categoria = nova_categ
                 print("Produto atualizado com sucesso!")
             elif opcao == "3":
@@ -55,7 +65,7 @@ def atualizar():
                 produto.preco = novo_preco
                 print("Produto atualizado com sucesso!")
             elif opcao == "5":
-                novo_setor = input("Novo setor: ")
+                novo_setor = input("Novo setor: ").capitalize()
                 produto.setor = novo_setor
                 print("Produto atualizado com sucesso!")
             else:
@@ -64,7 +74,7 @@ def atualizar():
 
 # Função para buscar dados de um produto
 def buscar():
-    nome = input("Nome do produto que deseja buscar: ")
+    nome = input("Nome do produto que deseja buscar: ").capitalize()
     for produto in estoque:
         if nome == produto.nome:
             print(f"Nome: {produto.nome}")
